@@ -17,5 +17,5 @@ mejor_valor <- function(valores, pesos, peso_max) { 
   cat ("Cantidad objetos", length(id_seleccionado), "\n")  
   cat ("Peso total: ", peso_seleccionado, "\n")  
   cat("Valor total:", sum(valores[id_seleccionado]),"\n")  
-  cat("Objetos seleccionados:", names(valores)[id_seleccionado] ,"\n
+  cat("Objetos seleccionados:", names(valores)[id_seleccionado] ,"\n")
 }
