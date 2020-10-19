@@ -1,5 +1,26 @@
+#############################################################################
+##             Heuristicas constructivas - Problema de la mochila          ##
+##                                                                         ##
+##                        Investigacion de Operaciones                     ##
+##                      Profesora: Leslie Perez Caceres                    ##
+##                  Escuela de Ingenieria Informatica - PUCV               ##
+##                                                                         ##
+#############################################################################
 
-mejor_valor <- function(valores, pesos, peso_max) {
+## Heuristica del mejor valor: añade objetos, comenzando por los
+## objetos con mayor valor, hasta que no es posible añadir mas
+##
+##   - instancia: lista con los siguientes elementos:
+##     * valores: vector de valores de los objetos
+##     * pesos: vector dew pesos de los objetos
+##     * peso_max: peso maximo para los objetos seleccionado
+##
+##  retorno: vector binario 0/1 con los objetos seleccionados
+mejor_valor <- function (instancia) 
+{
+  valores <- instancia$valores
+  pesos <- instancia$pesos
+  peso_max <- instancia$peso_max
   peso_seleccionado <- 0
   id_seleccionado <- c() 
   
@@ -12,11 +33,11 @@ mejor_valor <- function(valores, pesos, peso_max) {
     }
   }  
   id_seleccionado <- sort(id_seleccionado)
-  cat("\nSolucion:\n")
-  cat ("Cantidad objetos", length(id_seleccionado), "\n")
-  cat ("Peso total: ", peso_seleccionado, "\n")
-  cat("Valor total:", sum(valores[id_seleccionado]),"\n")
-  cat("Objetos seleccionados:", names(valores)[id_seleccionado] ,"\n")
+  cat("\nSolucion heuristica mejor valor:\n")
+  cat (" Cantidad objetos", length(id_seleccionado), "\n")
+  cat (" Peso total: ", peso_seleccionado, "\n")
+  cat (" Valor total:", sum(valores[id_seleccionado]),"\n")
+  cat (" Objetos seleccionados:", names(valores)[id_seleccionado] ,"\n")
   
   solucion = rep(0, length(valores))
   solucion[id_seleccionado] = 1
@@ -24,8 +45,20 @@ mejor_valor <- function(valores, pesos, peso_max) {
   return(solucion)
 }
 
-
-mejor_peso <- function(valores, pesos, peso_max) {
+## Heuristica del mejor peso: añade objetos, comenzando por los
+## objetos con menor peso, hasta que no es posible añadir mas
+##
+##   - instancia: lista con los siguientes elementos:
+##     * valores: vector de valores de los objetos
+##     * pesos: vector dew pesos de los objetos
+##     * peso_max: peso maximo para los objetos seleccionado
+##
+##  retorno: vector binario 0/1 con los objetos seleccionados
+mejor_peso <- function (instancia) 
+{
+  valores <- instancia$valores
+  pesos <- instancia$pesos
+  peso_max <- instancia$peso_max
   peso_seleccionado <- 0
   id_seleccionado <- c() 
   
@@ -39,11 +72,11 @@ mejor_peso <- function(valores, pesos, peso_max) {
     }
   }  
   id_seleccionado<- sort(id_seleccionado)
-  cat("\nSolucion:\n")
-  cat ("Cantidad objetos", length(id_seleccionado), "\n")
-  cat ("Peso total: ", peso_seleccionado, "\n")
-  cat("Valor total:", sum(valores[id_seleccionado]),"\n")
-  cat("Objetos seleccionados:", names(valores)[id_seleccionado] ,"\n")
+  cat("\nSolucion heuristica mejor peso:\n")
+  cat (" Cantidad objetos", length(id_seleccionado), "\n")
+  cat (" Peso total: ", peso_seleccionado, "\n")
+  cat (" Valor total:", sum(valores[id_seleccionado]),"\n")
+  cat (" Objetos seleccionados:", names(valores)[id_seleccionado] ,"\n")
   
   solucion = rep(0, length(valores))
   solucion[id_seleccionado] = 1
@@ -51,8 +84,21 @@ mejor_peso <- function(valores, pesos, peso_max) {
   return(solucion)
 }
 
-
-mejor_razon <- function(valores, pesos, peso_max) {
+## Heuristica de la mejor razon: añade objetos, comenzando por los
+## objetos con mayor razon valor/peso, hasta que no es posible añadir mas
+##
+##   instancia: lista con los siguientes elementos:
+##   - instancia: lista con los siguientes elementos:
+##     * valores: vector de valores de los objetos
+##     * pesos: vector dew pesos de los objetos
+##     * peso_max: peso maximo para los objetos seleccionado
+##
+##  retorno: vector binario 0/1 con los objetos seleccionados
+mejor_razon <- function(instancia) 
+{
+  valores <- instancia$valores
+  pesos <- instancia$pesos
+  peso_max <- instancia$peso_max
   peso_seleccionado <- 0
   id_seleccionado <- c() 
   
@@ -65,11 +111,11 @@ mejor_razon <- function(valores, pesos, peso_max) {
     }
   }  
   id_seleccionado<- sort(id_seleccionado)
-  cat("\nSolucion:\n")
-  cat ("Cantidad objetos", length(id_seleccionado), "\n")
-  cat ("Peso total: ", peso_seleccionado, "\n")
-  cat("Valor total:", sum(valores[id_seleccionado]),"\n")
-  cat("Objetos seleccionados:", names(valores)[id_seleccionado] ,"\n")
+  cat("\nSolucion heuristica mejor razon:\n")
+  cat (" Cantidad objetos", length(id_seleccionado), "\n")
+  cat (" Peso total: ", peso_seleccionado, "\n")
+  cat (" Valor total:", sum(valores[id_seleccionado]),"\n")
+  cat (" Objetos seleccionados:", names(valores)[id_seleccionado] ,"\n")
   
   solucion = rep(0, length(valores))
   solucion[id_seleccionado] = 1
@@ -77,7 +123,19 @@ mejor_razon <- function(valores, pesos, peso_max) {
   return(solucion)
 }
 
-solucion_random <- function(valores, pesos, peso_max) {
+## Generacion de solucion aleatoria
+##
+##   - instancia: lista con los siguientes elementos:
+##     * valores: vector de valores de los objetos
+##     * pesos: vector dew pesos de los objetos
+##     * peso_max: peso maximo para los objetos seleccionado
+##
+##  retorno: vector binario 0/1 con los objetos seleccionados
+solucion_random <- function (instancia) 
+{
+  valores <- instancia$valores
+  pesos <- instancia$pesos
+  peso_max <- instancia$peso_max
   peso_seleccionado = 0
   id_seleccionado = c()
   id_no_seleccionado = seq(1,length(valores))
@@ -93,11 +151,11 @@ solucion_random <- function(valores, pesos, peso_max) {
   }
   
   id_seleccionado<- sort(id_seleccionado)
-  cat("\nSolucion:\n")
-  cat ("Cantidad objetos", length(id_seleccionado), "\n")
-  cat ("Peso total: ", peso_seleccionado, "\n")
-  cat("Valor total:", sum(valores[id_seleccionado]),"\n")
-  cat("Objetos seleccionados:", names(valores)[id_seleccionado] ,"\n")
+  cat("\nSolucion aleatoria:\n")
+  cat (" Cantidad objetos", length(id_seleccionado), "\n")
+  cat (" Peso total: ", peso_seleccionado, "\n")
+  cat (" Valor total:", sum(valores[id_seleccionado]),"\n")
+  cat (" Objetos seleccionados:", names(valores)[id_seleccionado] ,"\n")
   
   solucion = rep(0, length(valores))
   solucion[id_seleccionado] = 1
@@ -105,28 +163,72 @@ solucion_random <- function(valores, pesos, peso_max) {
   return(solucion)
 }
 
-busqueda_local_bitflip <- function(solucion, valores, pesos, peso_max) {
+## Generacion de solucion vacia
+##
+##   - instancia: lista con los siguientes elementos:
+##     * valores: vector de valores de los objetos
+##     * pesos: vector dew pesos de los objetos
+##     * peso_max: peso maximo para los objetos seleccionado
+##
+##  retorno: vector binario 0/1 con los objetos seleccionados
+solucion_vacia <- function (instancia) 
+{
+  valores <- instancia$valores
+  pesos <- instancia$pesos
+  peso_max <- instancia$peso_max
+
+  cat("\nSolucion vacia:\n")
+  cat (" Cantidad objetos: 0\n")
+  cat (" Peso total: 0 \n")
+  cat (" Valor total: 0 \n")
+  cat (" Objetos seleccionados: ninguno\n")
+  
+  solucion = rep(0, length(valores))
+  names(solucion) = names(valores)
+  return(solucion)
+}
+
+
+## Busqueda local primera mejora utilizando el movimiento bitflip
+##
+##   - solucion: vector binario 0/1 con los objetos seleccionados en una la 
+##               solucion inicial
+##   - instancia: lista con los siguientes elementos:
+##     * valores: vector de valores de los objetos
+##     * pesos: vector dew pesos de los objetos
+##     * peso_max: peso maximo para los objetos seleccionado
+##
+##  retorno: vector binario 0/1 con los objetos seleccionados
+busqueda_local_bitflip <- function(solucion, instancia) 
+{
+  valores <- instancia$valores
+  pesos <- instancia$pesos
+  peso_max <- instancia$peso_max
   rho = max(valores/pesos)
   mejor_valor = feval(valores, pesos, peso_max, rho, which(solucion==1))
   mejor_solucion = solucion
   n_vecinos = length(solucion)
-  cat ("# Busqueda local bitflip\n")
+  cat ("\n# Busqueda local bitflip\n")
   cat ("# solucion inicial: ", which(solucion==1),"\n")
   cat ("# funcion de evaluacion: ", mejor_valor, "\n")
   
-  
   i = 1
+  ridx <- 1:n_vecinos
+  ridx <- sample(ridx, size=n_vecinos)
   while (i <= n_vecinos) {
     vecino = mejor_solucion
-    if (vecino[i] == 1) 
-      vecino[i] = 0
-    else 
-      vecino[i] = 1 
+    if (vecino[ridx[i]] == 1) {
+      vecino[ridx[i]] = 0
+      op <- "1->0"
+    } else { 
+      vecino[ridx[i]] = 1 
+      op <- "0->1"
+    }
     vecino_valor = feval(valores, pesos, peso_max, rho, which(vecino==1))
-    cat ("#   vecino ", i, " funcion de evaluacion: ", vecino_valor, "\n")
+    #cat ("#   vecino ", i, ", objeto:", ridx[i] , " " , op, " feval: ", vecino_valor, "\n")
     
     if (vecino_valor > mejor_valor) {
-      cat ("# mejor solucion encontrada: ", which(vecino==1), " funcion de evaluacion: ", vecino_valor, "\n")
+      cat ("#   mejora vecino ", i, ", objeto:", ridx[i] , " " , op, " feval: ", vecino_valor, "\n")
       mejor_valor = vecino_valor
       mejor_solucion = vecino
       i = 1
@@ -139,23 +241,28 @@ busqueda_local_bitflip <- function(solucion, valores, pesos, peso_max) {
   return(mejor_solucion)
 }
 
-feval <- function(valores, pesos, peso_max, rho, id_seleccionado) {
-  peso_seleccionado = sum(pesos[id_seleccionado])
-  if (peso_seleccionado > peso_max) {
-    penalizacion = rho * (peso_seleccionado - peso_max)
-  } else {
-    penalizacion = 0
-  }
-  fx = sum(valores[id_seleccionado]) - penalizacion
-  return(fx)
-}
-
-ils_bitflip <- function(solucion, valores, pesos, peso_max, max_evals=10000) {
+## Busqueda local iterativa utilizando el movimiento bitflip y perturbacion
+## bitflip aplicado aleatoriamente 3 veces
+##
+##   - solucion: vector binario 0/1 con los objetos seleccionados en una la 
+##               solucion inicial
+##   - instancia: lista con los siguientes elementos:
+##     * valores: vector de valores de los objetos
+##     * pesos: vector dew pesos de los objetos
+##     * peso_max: peso maximo para los objetos seleccionado
+##   - max_evals: numero maximo de soluciones evaluadas
+##
+##  retorno: vector binario 0/1 con los objetos seleccionados
+ils_bitflip <- function(solucion, instancia, max_evals=10000) 
+{
+  valores <- instancia$valores
+  pesos <- instancia$pesos
+  peso_max <- instancia$peso_max
   rho = max(valores/pesos)
   mejor_valor = incumbente_valor = feval(valores, pesos, peso_max, rho, which(solucion==1))
   mejor_solucion = incumbente_solucion = solucion
   n_vecinos = length(solucion)
-  cat ("# Iterated local search bitflip\n")
+  cat ("# Busqueda local iterativa bitflip\n")
   cat ("# solucion inicial: ", which(solucion==1),"\n")
   cat ("# funcion de evaluacion: ", mejor_valor, "\n")
   n_evals = 0
@@ -164,18 +271,23 @@ ils_bitflip <- function(solucion, valores, pesos, peso_max, max_evals=10000) {
   while (n_evals < max_evals){
     cat ("# Iteracion ILS ", iteracion, " evals:", n_evals,"\n")
     i = 1
+    ridx <- 1:n_vecinos
+    ridx <- sample(ridx, size=n_vecinos)
     while (i <= n_vecinos && n_evals < max_evals) {
       n_evals = n_evals + 1
       vecino = incumbente_solucion
-      if (vecino[i] == 1) 
-        vecino[i] = 0
-      else 
-        vecino[i] = 1 
+      if (vecino[ridx[i]] == 1) {
+        vecino[ridx[i]] = 0
+        op <- "1->0"
+      } else { 
+        vecino[ridx[i]] = 1 
+        op <- "0->1"
+      }
       vecino_valor = feval(valores, pesos, peso_max, rho, which(vecino==1))
-      cat ("#   vecino ", i, " funcion de evaluacion: ", vecino_valor, "\n")
+      #cat ("#   vecino ", i, ", objeto:", ridx[i] , " " , op, " feval: ", vecino_valor, "\n")
     
       if (vecino_valor > incumbente_valor) {
-        cat ("# mejor solucion encontrada: ", which(vecino==1), " funcion de evaluacion: ", vecino_valor, "\n")
+        cat ("#   mejora vecino ", i, ", objeto:", ridx[i] , " " , op, " feval: ", vecino_valor, "\n")
         incumbente_valor = vecino_valor
         incumbente_solucion = vecino
         i = 1
@@ -200,3 +312,4 @@ ils_bitflip <- function(solucion, valores, pesos, peso_max, max_evals=10000) {
   names(mejor_solucion) = names(valores)
   return(mejor_solucion)
 }
+
