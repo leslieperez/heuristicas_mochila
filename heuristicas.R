@@ -236,7 +236,7 @@ busqueda_local_bitflip <- function(solucion, instancia)
       i = i + 1
     }
   }
-  cat("# mejor solucion encontrada: ", which(mejor_solucion==1), " funcion objetivo: ", mejor_valor,"\n")
+  cat("# optimo local encontrado: ", which(mejor_solucion==1), " funcion objetivo: ", mejor_valor,"\n")
   names(mejor_solucion) = names(valores)
   return(mejor_solucion)
 }

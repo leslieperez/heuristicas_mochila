@@ -18,10 +18,9 @@ print(instancia)
 # Generar una solución con la heuristica de la mejor razon
 #solucion <- mejor_razon(instancia)
 
-# Leamos una instancia mas grande
-#instancia <- leer_instancia("instancias/kp-2000.txt")
+
 # generemos una solucion aleatoria
-#solucion <- solucion_random(instancia)
+#solucion <- solucion_vacia(instancia)
 # Apliquemos busqueda local
 #solucion <- busqueda_local_bitflip(solucion, instancia)
 
