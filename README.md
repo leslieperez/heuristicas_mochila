@@ -13,6 +13,6 @@ Para ejecutar use el script `run.R` o `run2.R`
 
 Desde la consola: 
 
-`Rscript run.r`
+`Rscript run.R`
 
 Siga las instrucciones dadas en clases y disponibles en el aula virtual del curso.
